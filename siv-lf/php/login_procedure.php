@@ -63,14 +63,14 @@ if($username->noErrors() && $password->noErrors())
                     else
                     {
                         // si la contraseña es incorrecta, muestra un mensaje
-                        $password->setErrorValue("usuario o contraseña incorrectos");
+                        $password->setErrorValue("Usuario o contraseña incorrectos");
                     }
                 }
             }
             else
             {
                 // lo mismo si no existe el usuario. no des indicios de cúal fue incorrecto.
-                $password->setErrorValue("usuario o contraseña incorrectos");
+                $password->setErrorValue("Usuario o contraseña incorrectos");
             }
         } 
         else

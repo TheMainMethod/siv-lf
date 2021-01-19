@@ -1,0 +1,129 @@
+/* variables globales */
+:root {
+    --aceptar: #6200EE;
+    --cancelar: rgba(112,112,112,.8);
+    --primario: #DC8686;
+    --secundario: #87A7F1;
+    --fuentePrincipal: 'Roboto', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1.8rem;
+    font-family: var(--fuentePrincipal);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+/* utilidades */
+
+.centrar {
+    text-align: center;
+}
+
+/* inicio de sesión */
+
+.obscuro {
+    background-color: rgba(0,0,0,.75);
+}
+
+.inicio-de-sesion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80rem;
+    background-image: url("../img/17s0nyi4.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 5rem auto 0 auto;
+}
+
+.inicio-de-sesion:hover {
+    box-shadow: 0 0 1rem var(--secundario);
+}
+
+.inicio-de-sesion__logo {
+    padding: 5rem 2rem;
+}
+
+.inicio-de-sesion__campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.inicio-de-sesion__campo__texto {
+    font-family: var(--fuentePrincipal);
+    font-size: 2rem;
+}
+
+.inicio-de-sesion__campo__registro {
+    width: 25rem;
+    height: 3rem;
+    border-color: #909090;
+    background: #fff;
+    border-radius: .5rem;
+    padding: 0 0 0 1rem;
+    font-family: var(--fuentePrincipal);
+}
+
+span {
+    font-family: var(--fuentePrincipal);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--primario);
+    text-align: center;
+}
+
+    
+.inicio-de-sesion__btn {
+    background: transparent;
+    padding: .5rem 1rem;
+    border: 2px solid var(--aceptar);
+    border-radius: 5px;
+    font-family: var(--fuentePrincipal);
+    font-weight: 500;
+}
+
+.inicio-de-sesion__registrarse {
+    background: transparent;
+    padding: .5rem 1rem;
+    border: 2px solid var(--cancelar);
+    border-radius: 5px;
+    font-family: var(--fuentePrincipal);
+    font-weight: 500;
+    color: #000;
+    margin: 1rem 0;
+}
+
+.inicio-de-sesion__btn:hover {
+    background-color: var(--aceptar);
+    color: #fff;
+    cursor: pointer;
+}
+
+.inicio-de-sesion__registrarse:hover {
+    background-color: var(--cancelar);
+    color: #fff;
+    cursor: pointer;
+}

@@ -36,12 +36,12 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <img src="img/logo.svg" alt="Logo" class="inicio-de-sesion__logo">
 
         <form id="loginform">
-            <div class="form-group">
+            <div class="form-group inicio-de-sesion__campo">
                 <label class="inicio-de-sesion__campo__texto">Usuario:</label>
                 <input type="text" name="username" placeholder="Ingresa tu usuario" class="inicio-de-sesion__campo__registro">
                 <span id="username_err"></span>
             </div>    
-            <div class="form-group">
+            <div class="form-group inicio-de-sesion__campo">
                 <label class="inicio-de-sesion__campo__texto">Contraseña:</label>
                 <input type="password" name="password" placeholder="Ingresa tu contraseña" class="inicio-de-sesion__campo__registro">
                 <span id="password_err"></span>

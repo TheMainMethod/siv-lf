@@ -14,41 +14,49 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>iniciar sesion</title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Inicio de Sesión</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="js/jquery-3.5.1.js"></script>
-  <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-3.5.1.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
 </head>
 
-<body>
 
-    <div>
-        <p class="backend">SIV-LF (xd)</p>
+<body class="obscuro">
+    <div class="inicio-de-sesion">
+
+        <img src="img/logo.svg" alt="Logo" class="inicio-de-sesion__logo">
+
+        <form id="loginform">
+            <div class="form-group">
+                <label class="inicio-de-sesion__campo__texto">Usuario:</label>
+                <input type="text" name="username" placeholder="Ingresa tu usuario" class="inicio-de-sesion__campo__registro">
+                <span id="username_err"></span>
+            </div>    
+            <div class="form-group">
+                <label class="inicio-de-sesion__campo__texto">Contraseña:</label>
+                <input type="password" name="password" placeholder="Ingresa tu contraseña" class="inicio-de-sesion__campo__registro">
+                <span id="password_err"></span>
+            </div>
+            <div class="form-group centrar">
+                <input type="submit" value="Iniciar sesión" class="inicio-de-sesion__btn centrar">
+            </div>
+        </form>
+        <button onclick="toSignup()" class="inicio-de-sesion__registrarse">Registrarse</button>
     </div>
-
-    <form id="loginform">
-        <div class="form-group">
-            <label class="backend">nombre de usuario</label>
-            <input type="text" name="username" class="backend">
-            <label class="backend" id="username_err"></label>
-        </div>    
-        <div class="form-group">
-            <label class="backend">contraseña</label>
-            <input type="password" name="password" class="backend">
-            <label class="backend" id="password_err"></label>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="backend" value="iniciar sesión">
-        </div>
-    </form>
-    <button class="backend" onclick="toSignup()">registrarse</button>
-
-  <script src="js/login.js"></script>
+    
+    <script src="js/login.js"></script>
 
 </body>
 
 </html>
+
+

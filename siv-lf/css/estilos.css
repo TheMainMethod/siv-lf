@@ -69,7 +69,7 @@ img {
 .inicio-de-sesion__campo {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
 }
 
 .inicio-de-sesion__campo__texto {
@@ -103,6 +103,7 @@ span {
     border-radius: 5px;
     font-family: var(--fuentePrincipal);
     font-weight: 500;
+    margin-top: 1rem;
 }
 
 .inicio-de-sesion__registrarse {

@@ -13,11 +13,11 @@ $login_success = 0;
 //valida nombre de usuario y contraseña
 //nombre de usuario
 $username = new FormStringElement(trim($_POST["username"]));
-$username->validateEmpty("por favor proporciona un nombre de usuario");
+$username->validateEmpty("Introduce un usuario");
 
 //contraseña
 $password = new FormStringElement(trim($_POST["password"]));
-$password->validateEmpty("por favor proporciona una contraseña");
+$password->validateEmpty("Introduce una contraseña");
  
 
 // valida los datos de inicio de sesión

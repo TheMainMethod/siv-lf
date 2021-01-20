@@ -17,62 +17,68 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>registrarse</title>
+    <title>Registro</title>
     <script src="js/jquery-3.5.1.js"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
 </head>
-<body>
-    <div class="wrapper">
-        <p class="backend">nuevo empleado</p>
+<body class="grisacio">
+    <header class="encabezado">
+        <img src="img/logo.svg" alt="Logo" class="encabezado__logo">
+    </header>
+    <div class="wrapper contenedor">
+        <p class="titulo-principal">nuevo empleado</p>
 
         <form id="signupform">
             <div class="form-group">
-                <label class="backend">nombre usuario</label>
-                <input type="text" name="username" class="backend">
-                <label class="backend" id="username_err"></label>
+                <label class="">nombre usuario</label>
+                <input type="text" name="username" class="">
+                <label class="" id="username_err"></label>
             </div>    
             <div class="form-group">
-                <label class="backend">contraseña</label>
-                <input type="password" name="password" class="backend">
-                <label class="backend" id="password_err"></label>
+                <label class="">contraseña</label>
+                <input type="password" name="password" class="">
+                <label class="" id="password_err"></label>
             </div>
             <div class="form-group">
-                <label class="backend">repite contraseña</label>
-                <input type="password" name="confirm_password" class="backend">
-                <label class="backend" id="confirm_password_err"></label>
+                <label class="">repite contraseña</label>
+                <input type="password" name="confirm_password" class="">
+                <label class="" id="confirm_password_err"></label>
             </div>
             <div class="form-group">
-                <label class="backend">nombre</label>
-                <input type="text" name="name" class="backend">
-                <label class="backend" id="name_err"></label>
+                <label class="">nombre</label>
+                <input type="text" name="name" class="">
+                <label class="" id="name_err"></label>
             </div>    
             <div class="form-group">
-                <label class="backend">apellido paterno</label>
-                <input type="text" name="last_name" class="backend">
-                <label class="backend" id="last_name_err"></label>
+                <label class="">apellido paterno</label>
+                <input type="text" name="last_name" class="">
+                <label class="" id="last_name_err"></label>
             </div>    
             <div class="form-group">
-                <label class="backend">apellido materno</label>
-                <input type="text" name="mid_name" class="backend">
-                <label class="backend" id="mid_name_err"></label>
+                <label class="">apellido materno</label>
+                <input type="text" name="mid_name" class="">
+                <label class="" id="mid_name_err"></label>
             </div>
             <div class="form-group">
-                <label class="backend">turno</label>
-                <select name="shift" class="backend">
+                <label class="">turno</label>
+                <select name="shift" class="">
                     <option value=1>Matutino</option>
                     <option value=0>Vespertino</option>
                 </select>
             </div> 
             <div class="form-group">
-                <label class="backend">autorización</label>
-                <input type="password" name="owner_pass" class="backend">
-                <label class="backend" id="owner_pass_err"></label>
+                <label class="">autorización</label>
+                <input type="password" name="owner_pass" class="">
+                <label class="" id="owner_pass_err"></label>
             </div>
             <div>
-                <input type="submit" class="backend" value="agregar">
+                <input type="submit" class="" value="agregar">
 
             </div>
-            <p class="backend">ya tienes cuenta? <button class="backend" onclick="toLogin()">inicia sesión</button></p>
+            <p class="">ya tienes cuenta? <button class="" onclick="toLogin()">inicia sesión</button></p>
         </form>
 
     </div>   

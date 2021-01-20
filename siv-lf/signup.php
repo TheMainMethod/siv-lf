@@ -31,48 +31,48 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
     <div class="wrapper contenedor">
         <p class="titulo-principal">nuevo empleado</p>
 
-        <form id="signupform">
+        <form id="signupform" class="formulario">
             <div class="form-group">
-                <label class="">nombre usuario</label>
-                <input type="text" name="username" class="">
-                <label class="" id="username_err"></label>
+                <label class="formulario__texto">nombre usuario</label>
+                <input type="text" name="username" class="campo">
+                <span id="username_err"></span>
             </div>    
             <div class="form-group">
-                <label class="">contraseña</label>
-                <input type="password" name="password" class="">
-                <label class="" id="password_err"></label>
+                <label class="formulario__texto">contraseña</label>
+                <input type="password" name="password" class="campo">
+                <span id="password_err"></span>
             </div>
             <div class="form-group">
-                <label class="">repite contraseña</label>
-                <input type="password" name="confirm_password" class="">
-                <label class="" id="confirm_password_err"></label>
+                <label class="formulario__texto">repite contraseña</label>
+                <input type="password" name="confirm_password" class="campo">
+                <span id="confirm_password_err"></span>
             </div>
             <div class="form-group">
-                <label class="">nombre</label>
-                <input type="text" name="name" class="">
-                <label class="" id="name_err"></label>
+                <label class="formulario__texto">nombre</label>
+                <input type="text" name="name" class="campo">
+                <span id="name_err"></span>
             </div>    
             <div class="form-group">
-                <label class="">apellido paterno</label>
-                <input type="text" name="last_name" class="">
-                <label class="" id="last_name_err"></label>
+                <label class="formulario__texto">apellido paterno</label>
+                <input type="text" name="last_name" class="campo">
+                <span id="last_name_err"></span>
             </div>    
             <div class="form-group">
-                <label class="">apellido materno</label>
-                <input type="text" name="mid_name" class="">
-                <label class="" id="mid_name_err"></label>
+                <label class="formulario__texto">apellido materno</label>
+                <input type="text" name="mid_name" class="campo">
+                <span id="mid_name_err"></span>
             </div>
             <div class="form-group">
-                <label class="">turno</label>
+                <label class="formulario__texto">turno</label>
                 <select name="shift" class="">
                     <option value=1>Matutino</option>
                     <option value=0>Vespertino</option>
                 </select>
             </div> 
             <div class="form-group">
-                <label class="">autorización</label>
-                <input type="password" name="owner_pass" class="">
-                <label class="" id="owner_pass_err"></label>
+                <label class="formulario__texto">autorización</label>
+                <input type="password" name="owner_pass" class="campo">
+                <span id="owner_pass_err"></span>
             </div>
             <div>
                 <input type="submit" class="" value="agregar">

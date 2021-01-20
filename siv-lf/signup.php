@@ -1,3 +1,4 @@
+  
 <?php
 
 // inicializa sesión
@@ -33,44 +34,44 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
 
         <form id="signupform" class="formulario">
             <div class="form-group">
-                <label class="formulario__texto">nombre usuario</label>
+                <label class="formulario__texto">Nombre de usuario</label>
                 <input type="text" name="username" class="campo">
                 <span id="username_err"></span>
             </div>    
             <div class="form-group">
-                <label class="formulario__texto">contraseña</label>
+                <label class="formulario__texto">Contraseña</label>
                 <input type="password" name="password" class="campo">
                 <span id="password_err"></span>
             </div>
             <div class="form-group">
-                <label class="formulario__texto">repite contraseña</label>
+                <label class="formulario__texto">Repite la contraseña</label>
                 <input type="password" name="confirm_password" class="campo">
                 <span id="confirm_password_err"></span>
             </div>
             <div class="form-group">
-                <label class="formulario__texto">nombre</label>
+                <label class="formulario__texto">Nombre</label>
                 <input type="text" name="name" class="campo">
                 <span id="name_err"></span>
             </div>    
             <div class="form-group">
-                <label class="formulario__texto">apellido paterno</label>
+                <label class="formulario__texto">Apellido paterno</label>
                 <input type="text" name="last_name" class="campo">
                 <span id="last_name_err"></span>
             </div>    
             <div class="form-group">
-                <label class="formulario__texto">apellido materno</label>
+                <label class="formulario__texto">Apellido materno</label>
                 <input type="text" name="mid_name" class="campo">
                 <span id="mid_name_err"></span>
             </div>
             <div class="form-group">
-                <label class="formulario__texto">turno</label>
+                <label class="formulario__texto">Turno</label>
                 <select name="shift" class="">
                     <option value=1>Matutino</option>
                     <option value=0>Vespertino</option>
                 </select>
             </div> 
             <div class="form-group">
-                <label class="formulario__texto">autorización</label>
+                <label class="formulario__texto">Autorización</label>
                 <input type="password" name="owner_pass" class="campo">
                 <span id="owner_pass_err"></span>
             </div>
@@ -78,7 +79,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
                 <input type="submit" class="" value="agregar">
 
             </div>
-            <p class="">ya tienes cuenta? <button class="" onclick="toLogin()">inicia sesión</button></p>
+            <p class="">¿Ya tienes cuenta? <button class="" onclick="toLogin()">Inicia sesión</button></p>
         </form>
 
     </div>   

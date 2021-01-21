@@ -1,3 +1,4 @@
+  
 <?php
 
 // inicializa sesión

@@ -15,7 +15,7 @@ $(document).ready(function()
                 //si pudo iniciar sesión, redirígelo a la página de inicio
                 if (jsonData.success == 1)
                 {
-                    location.href = 'welcome.php';
+                    location.href = 'sales.php';
                 }
                 else
                 {

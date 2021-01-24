@@ -14,7 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Pantalla Principal</title>
+    <title>Ventas</title>
 
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/jquery.hotkeys.js"></script>
@@ -23,19 +23,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 <body>
     <div class="backend">
         <header id="logo">
-            .
+            aqu iría el logo
 	   </header>
 	<aside id="barraLateral">
-        <div><button class="backend" onclick="">Ventas</button></div>
-        <div><button class="backend" onclick="">Productos</button></div>
-        <div><button class="backend" onclick="">Pedidos</button></div>
-        <div><button class="backend" onclick="">Inventario</button></div>
-        <div><button class="backend" onclick="">Corte</button></div>
-        <p></p>
-        <div><button class="backend" onclick="">Settings</button></div>
+        <nav>
+            <ul>
+                <li><button class="strong-button-backend">Ventas</button></li>
+                <li><button class="backend" onclick="">Productos</button></li>
+                <li><button class="backend" onclick="">Pedidos</button></li>
+                <li><button class="backend" onclick="">Inventario</button></li>
+                <li><button class="backend" onclick="">Corte</button></li>
+            </ul>
+        </nav>
+
+        <div><button class="backend" onclick="">Ajustes</button></div>
         <time></time>
         <p></p>
     </aside>
+
+    <p>bienvenido, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</p>
+    <p>
+        <button class="backend" onclick="logout()">cerrar sesión</button>
+    </p>
+
         <section id="barra de busqueda"  style="width:100%">
              <div class="form-group">
             <input type="text" name="nombre producto" class="backend">

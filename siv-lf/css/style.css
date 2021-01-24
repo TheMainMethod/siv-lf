@@ -3,6 +3,13 @@
     font-family: 'Comic Sans MS';
 }
 
+.strong-button-backend
+{
+    font-family: 'Comic Sans MS';
+    background-color: rgb(97, 97, 97);
+    font-weight: bold;
+}
+
 .table-backend
 {   
     border: 1px solid black;

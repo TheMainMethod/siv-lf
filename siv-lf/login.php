@@ -4,7 +4,7 @@ session_start();
  
 //si el usuario ya inició sesión, redirígelo a la página de bienvenida
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: sales.php");
     exit;
 }
 

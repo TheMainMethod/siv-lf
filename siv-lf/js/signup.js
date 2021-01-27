@@ -33,8 +33,3 @@ $(document).ready(function()
        });
      });
 });
-
-function toLogin()
-{
-    location.href = 'login.php';
-}

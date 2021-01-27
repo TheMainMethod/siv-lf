@@ -79,14 +79,15 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
                     <span id="owner_pass_err"></span>
                 </div>
                 <div class="formulario-registro--last">
-                    <input type="submit" class="formulario-registro__boton-agregar" value="agregar">
+                    <input type="submit" class="formulario-registro__boton-agregar" value="Agregar">
                 </div>
-                <p class="formulario-registro--last">ya tienes cuenta? <button class="formulario-registro__boton-inicio " onclick="toLogin()">inicia sesión</button></p>
+                <p class="formulario-registro--last">¿Ya tienes cuenta? <button class="formulario-registro__boton-inicio " onclick="toLogin()">Inicia sesión</button></p>
             </form>
         </fieldset>
 
     </div>   
 
-    <script src="js/signup.js"></script> 
+    <script src="js/signup.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

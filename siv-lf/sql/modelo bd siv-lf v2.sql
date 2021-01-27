@@ -21,25 +21,21 @@ rfc_empleado char(14) unique,
 nombre varchar(50),
 apellido_pat varchar(50),
 apellido_mat varchar(50),
-rol enum('dueño','registro_ventas','registro_inventario','registro_ambos','ninguno') not null default 'ninguno',
-correo_electronico varchar(75),
+rol enum('dueño','empleados') not null default 'empleados',
 es_turno_matutino boolean not null,
-preferencias_interfaz boolean not null default false, -- una ruta a un archivo de configuraciones, que lleva el rfc del trabajador codificado.
--- la idea es que consulte el archivo solo si es 'true'
+
+-- variables de config
+filas_max_inventario int not null default 15,
+pag_max_inventario int not null default 15,
+
+filas_max_productos int not null default 6,
+pag_max_productos int not null default 15,
+
+-- para iniciar sesión
 n_usuario char(20) not null unique,
 contra char(255) not null unique, -- se guarda el valor codificado, no la contraseña per se
 
 primary key (id_empleado)
-);
-
-create table `teléfonos`
-(
-id_telefono int not null unique auto_increment,
-empleados_id_empleado int not null unique,
-telefono decimal(12),
-
-primary key (id_telefono),
-constraint foreign key (empleados_id_empleado) references `empleados`(id_empleado) on update cascade on delete cascade
 );
 
 create table `entradas`
@@ -147,7 +143,7 @@ DELIMITER //
 -- ADICIÓN DE PRODUCTOS NUEVOS
 drop procedure if exists adicion_de_productos//
 create procedure adicion_de_productos
-(in _nombre varchar(15), in _descripcion varchar(150), in _precio_unitario decimal(15,2), in _cantidad int, in _fecha_registro datetime, in _id_empleado int)
+(in _nombre varchar(50), in _descripcion varchar(150), in _precio_unitario decimal(15,2), in _cantidad int, in _fecha_registro datetime, in _id_empleado int)
 begin 
 
 declare _id_entrada int;
@@ -277,6 +273,8 @@ DELIMITER ;
 -- -----------------
 DELIMITER //
 
+
+-- a
 drop function if exists nueva_venta//
 create function nueva_venta(_id_empleado int) returns int
 reads sql data
@@ -285,12 +283,24 @@ insert into `ventas`(empleados_id_empleado) values(_id_empleado);
 return last_insert_id();
 end //
 
+
+-- a
 drop function if exists nuevo_eliminado//
 create function nuevo_eliminado(_id_empleado int) returns int
 reads sql data
 begin
 insert into `eliminados`(empleados_id_empleado) values(_id_empleado);
 return last_insert_id();
+end //
+
+-- CONTANDO LOS PRODUCTOS DIFERENTES EN EL INVENTARIO
+drop function if exists cuenta_inventario//
+create function cuenta_inventario() returns int
+reads sql data
+begin
+
+return (select count(id_producto) from `productos`);
+
 end //
 
 DELIMITER ;
@@ -321,9 +331,62 @@ insert into `empleados`(n_usuario, contra, es_turno_matutino, rol) values('DUEÑ
 -- algunos productos
 -- 
 
-call adicion_de_productos('uno','rojo','5.00', 4, now(),1);
-call adicion_de_productos('dos','naranja','5.50', 20, now(),1);
-call adicion_de_productos('tres','amarillo y verde','100.00', 69, now(), 1);
-call adicion_de_productos('jhin','verde azulado','0.99', 34, now(),1);
-call adicion_de_productos('sinko peso','azul','99.00', 1, now(),1);
+call adicion_de_productos('Patchouli Knowledge','In der Dunkelheit, ganz umhüllt von tiefer Schwärze', 100.14, 88, now(),1);
+call adicion_de_productos('Patchouli Knowledge','Tanzt die Apathie doch ich werde ihrem Schritt nicht folgen', 112.00, 26, now(),1);
+call adicion_de_productos('Remilia Scarlet','Mein Blick ist verhüllt und Ich kann mein Herz nicht sehen', 166.69, 58, now(), 1);
+call adicion_de_productos('Remilia Scarlet','Selbst wenn es zerbricht interessiert - es- mich nicht',82.93, 19, now(),1);
 
+call adicion_de_productos('Sakuya Izayoi','Ich beweg mich nicht, stehe still und warte schweigend', 242.57, 92, now(),1);
+call adicion_de_productos('Sakuya Izayoi','Doch es trägt mich fort denn die Risse der Zeit greifen nach mir', 236.76, 33, now(),1);
+call adicion_de_productos('Flandre Scarlet','Es berührt mich nicht, ich will all das, nur vergessen', 173.07, 66, now(), 1);
+call adicion_de_productos('Flandre Scarlet','Ich bin wie ich bin und mehr zählt ja auch nicht.',173.53, 54, now(),1);
+
+call adicion_de_productos('Youmu Konpaku','Träum ich einen Traum? Sehe ich die Wirklichkeit?', 237.28, 71, now(),1);
+call adicion_de_productos('Youmu Konpaku','Meine Worte helfen nicht, denn ich bin noch nicht bereit.', 176.95, 77, now(),1);
+call adicion_de_productos('Yuyuko Saigyouji','Und die Traurigkeit in mir, erschöpft mich in dieser Zeit', 79.97, 81, now(), 1);
+call adicion_de_productos('Yuyuko Saigyouji','Lieber würde ich nichts fühl\'n, wäre von dem Leid befreit.', 30.93, 27, now(),1);
+
+call adicion_de_productos('Komachi Onozuka','Was du sagst versteh ich nicht, es verwirrt mich fürchterlich', 123.06, 33, now(),1);
+call adicion_de_productos('Komachi Onozuka','Mein Herz halte ich versteckt und Gefühle unentdeckt', 124.16, 71, now(),1);
+call adicion_de_productos('Eiki Shikieiki','Jag ich meinen Träumen nach werde ich bloß wieder schwach', 190.25, 78, now(), 1);
+call adicion_de_productos('Eiki Shikieiki','Und so ich reiße alles mit in die tiefe Dunkelheit', 150.75, 67, now(),1);
+
+call adicion_de_productos('Fujiwara no Mokou','Hält denn jemand so wie ich seine Zukunft in der Hand', 191.03, 86, now(),1);
+call adicion_de_productos('Fujiwara no Mokou','Gehör\' ich in diese Welt oder hab ich\'s nicht verdient', 231.52, 99, now(),1);
+call adicion_de_productos('Keine Kamishirasawa Normal','Warum schmerzt mein Herz so sehr? um wen trauer ich denn nur?', 129.71, 50, now(), 1);
+call adicion_de_productos('Keine Kamishirasawa Hakutaku','Ich versteh mich selber nicht seh im Spiegel kein Gesicht.', 230.82, 78, now(),1);
+
+call adicion_de_productos('Eirin Yagokoro','Und ich laufe ohne Ziel, ist das alles nur ein Spiel', 104.00, 75, now(),1);
+call adicion_de_productos('Eirin Yagokoro','Werd geblendet von dem Licht doch erreichen kann ich\'s nicht.', 148.76, 92, now(),1);
+call adicion_de_productos('Kaguya Houraisan','Könnte ich \'ne Andere sein bleib ich sicher nicht allein', 174.93, 45, now(), 1);
+call adicion_de_productos('Kaguya Houraisan','Und dreh ich mich zu dem Schein hüllt er mich letztendlich ein', 80.81, 45, now(),1);
+
+call adicion_de_productos('Sanae Kochiya','Und die Zeit vergeht, fließt vorbei und in dem Lichte', 80.43, 26, now(),1);
+call adicion_de_productos('Hina Kagiyama','Tanzt die Apathie und ich werde ihrem Schritt nun folgen', 142.16, 57, now(),1);
+call adicion_de_productos('Kanako Yasaka','Mein Blick ist verhüllt und ich kann mein Herz nicht sehen', 78.48, 28, now(), 1);
+call adicion_de_productos('Suwako Moriya','Selbst wenn es zerbricht interessiert - es - mich nicht', 50.41, 31, now(),1);
+
+call adicion_de_productos('Yukari Yakumo','Ich beweg mich nicht, stehe still und warte schweigend', 79.52, 17, now(),1);
+call adicion_de_productos('Tenshi Hinanawi','Doch es trägt mich fort denn die Risse der Zeit greifen nach mir', 112.52, 51, now(),1);
+call adicion_de_productos('Yukari Yakumo','Es berührt mich nicht, ich will all das, nur vergessen', 13.67, 11, now(), 1);
+call adicion_de_productos('Tenshi Hinanawi','Ich bin wie ich bin und mehr zählt ja auch nicht.',137.31, 11, now(),1);
+
+call adicion_de_productos('Aya Shameimaru','Träum ich einen Traum? Sehe ich die Wirklichkeit?', 211.49, 27, now(),1);
+call adicion_de_productos('Aya Shameimaru','Meine Worte helfen nicht, denn ich bin noch nicht bereit.', 153.20, 22, now(),1);
+call adicion_de_productos('Suika Ibuki','Und die Traurigkeit in mir, erschöpft mich in dieser Zeit', 25.41, 25, now(), 1);
+call adicion_de_productos('Suika Ibuki','Lieber würde ich nichts fühl\'n, wäre von dem Leid befreit.', 70.17, 95, now(),1);
+
+call adicion_de_productos('Alice Margatroid','Was du sagst versteh ich nicht, es verwirrt mich fürchterlich', 244.79, 97, now(),1);
+call adicion_de_productos('Alice Margatroid','Mein Herz halte ich versteckt und Gefühle unentdeckt', 116.02, 42, now(),1);
+call adicion_de_productos('Nitori Kawashiro','Jag ich meinen Träumen nach werde ich bloß wieder schwach', 87.40, 28, now(), 1);
+call adicion_de_productos('Nitori Kawashiro','Und so ich reiße alles mit in die tiefe Dunkelheit', 31.12, 30, now(),1);
+
+call adicion_de_productos('Yuuka Kazami','Mache ich nur einen Schritt. Mache ich nur einen Schritt',212.41, 37, now(),1);
+call adicion_de_productos('Yuuka Kazami','Zerstör ich das was ich lieb. Zerstör ich das was ich lieb', 157.62, 46, now(),1);
+call adicion_de_productos('Elly','Drück ich meine Trauer aus. Drück ich meine Trauer aus', 19.15, 91, now(), 1);
+call adicion_de_productos('Elly','Wird mein Herz dann wieder rein. Taucht in weisse Farbe ein', 215.35, 92, now(),1);
+
+call adicion_de_productos('Yuuka Kazami','Ich weiß gar nichts über dich. Ich weiß gar nichts über mich',133.37, 65, now(),1);
+call adicion_de_productos('Yuuka Kazami','Ich versteh mich selber nicht. Meine Welt hat kein Gesicht', 80.76, 49, now(),1);
+call adicion_de_productos('Reimu Hakurei','Mach ich meine Augen auf. Nimmt das Unheil seinen Lauf', 11.53, 88, now(), 1);
+call adicion_de_productos('Marisa Kirisame','Und nun zerr ich alles mit in die tiefe Dunkelheit', 78.16, 58, now(),1);

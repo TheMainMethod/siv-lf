@@ -2,9 +2,14 @@ select * from `productos`;
 
 select * from `ejemplares`;
 
+select count(codigo_de_barras) from `ejemplares`;
+
 select * from `entradas`;
 
 select * from `ventas`;
+
+-- se explica solo
+select cuenta_inventario(); -- matalo, inutil, caca, basura
 
 -- cuenta todos, incluso vendidos y eliminados
 select productos_id_producto, count(productos_id_producto) 

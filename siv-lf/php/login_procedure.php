@@ -24,7 +24,10 @@ $password->validateEmpty("Introduce una contraseña");
 if($username->noErrors() && $password->noErrors())
 {
     // prepara la sentencia
-    $sql = "SELECT id_empleado, n_usuario, contra, rol FROM empleados WHERE n_usuario = ?";
+    $sql = 'SELECT id_empleado, n_usuario, contra, rol'.
+    ', filas_max_inventario, pag_max_inventario'.
+    ', filas_max_productos, pag_max_productos'.
+    ' FROM empleados WHERE n_usuario = ?';
     
     if($stmt = mysqli_prepare($conn, $sql)){
         // enlaza variables a la sentencia preparada como parámetros
@@ -42,7 +45,10 @@ if($username->noErrors() && $password->noErrors())
             // si el usuario existe, verifica la contraseña
             if(mysqli_stmt_num_rows($stmt) == 1){                    
                 // Bind result variables
-                mysqli_stmt_bind_result($stmt, $user_id, $session_username, $hashed_password, $role);
+                mysqli_stmt_bind_result($stmt, $user_id, $session_username, $hashed_password, $role,
+                $inv_max_rows, $inv_max_pages,
+                $products_max_rows, $products_max_pages);
+
                 if(mysqli_stmt_fetch($stmt))
                 {
                     if(Password::verify($password->getFinalValue(), $hashed_password))
@@ -54,7 +60,13 @@ if($username->noErrors() && $password->noErrors())
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $user_id;
                         $_SESSION["username"] = $session_username;
-                        $_SESSION["role"] = $role;                            
+                        $_SESSION["role"] = $role;
+                        //preferencias interfaz
+                        $_SESSION["inv_max_rows"] = $inv_max_rows;
+                        $_SESSION["inv_max_pages"] = $inv_max_pages;
+
+                        $_SESSION["products_max_rows"] = $products_max_rows;
+                        $_SESSION["products_max_pages"] = $products_max_pages;
                         
                         // redirige a la página de bienvenida
                         $login_success = 1;

@@ -27,12 +27,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 	   </header>
 	<aside id="barraLateral">
         <nav>
-            <ul>
+            <ul style="display:inline">
                 <li><button class="strong-button-backend">Ventas</button></li>
                 <li><button class="backend" onclick="">Productos</button></li>
                 <li><button class="backend" onclick="">Pedidos</button></li>
-                <li><button class="backend" onclick="">Inventario</button></li>
+                <li><button class="backend" onclick="toInventory()">Inventario</button></li>
                 <li><button class="backend" onclick="">Corte</button></li>
+                <?php
+                if($_SESSION["role"] == 'dueño')
+                {
+                    echo '<li><button class="backend" onclick="">Empleados</button></li>';
+                }
+                ?>
             </ul>
         </nav>
 
@@ -100,4 +106,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     </div>
     <small>SIV-LF</small>
     <script src="js/sales.js"></script> 
+    <script src="js/navigation.js"></script> 
 </body>

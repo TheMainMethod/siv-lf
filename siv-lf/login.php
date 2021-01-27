@@ -54,6 +54,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     </div>
     
     <script src="js/login.js"></script>
+    <script src="js/navigation.js"></script>
 
 </body>
 

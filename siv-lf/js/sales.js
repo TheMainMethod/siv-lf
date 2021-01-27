@@ -21,8 +21,3 @@ $(document).ready(function()
         return false;
     });
 });
-
-function logout()
-{
-    location.href = 'logout.php';
-}

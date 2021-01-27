@@ -66,5 +66,17 @@ class FormStringElement
     }
 }
 
+//si no se usa, borrar
+function isInteger($val)
+{
+    if (!is_scalar($val) || is_bool($val)) {
+        return false;
+    }
+    if (is_float($val + 0) && ($val + 0) > PHP_INT_MAX) {
+        return false;
+    }
+    return is_float($val) ? false : preg_match('~^((?:\+|-)?[0-9]+)$~', $val);
+}
+
 
 ?>

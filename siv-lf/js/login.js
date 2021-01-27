@@ -26,8 +26,3 @@ $(document).ready(function()
        });
      });
 });
-
-function toSignup()
-{
-    location.href = 'signup.php';
-}

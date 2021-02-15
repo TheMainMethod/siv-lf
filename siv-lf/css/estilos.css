@@ -49,7 +49,7 @@ img {
 }
 
 .contenedor{
-    max-width: 80rem;
+    max-width: 100rem;
     margin: 0 auto;
 }
 
@@ -170,67 +170,4 @@ span {
 .encabezado__logo {
     width: 20rem;
     margin: 1rem 0;
-}
-
-.borde {
-    border: 2px solid #000;
-}
-
-.borde__texto {
-    padding: 0 1rem;
-    font-size: 2rem;
-    font-family: var(--fuentePrincipal);
-}
-
-.formulario__texto {
-    text-transform: capitalize;
-}
-
-.formulario-registro {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 1rem;
-    justify-items: center;
-}
-
-.formulario-registro--last {
-    grid-column: 1/3;
-}
-
-.formulario-registro__boton-agregar{
-    background: transparent;
-    padding: .5rem 1rem;
-    border: 2px solid var(--aceptar);
-    border-radius: 5px;
-    font-family: var(--fuentePrincipal);
-    font-weight: 400;
-    margin-top: 1rem;
-}
-
-.formulario-registro__boton-agregar:hover {
-    background-color: var(--aceptar);
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-}
-
-.formulario-registro__boton-inicio {
-    background: transparent;
-    border: 0;
-    border-bottom: 2px solid var(--cancelar);
-    font-family: var(--fuentePrincipal);
-    font-weight: 400;
-    color: var(--cancelar);
-    margin: 1rem 0;
-}
-
-.formulario-registro__boton-inicio:hover{
-    color: #000;
-    border-bottom: 2px solid #000;
-    cursor: pointer;
-}
-
-.elemento {
-    display: flex;
-    flex-direction: column;
 }

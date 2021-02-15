@@ -149,7 +149,7 @@ span {
 /* registro  */
 
 .encabezado {
-    /* background-color: var(--primario); */
+    background-color: var(--primario);
     display: flex;
     justify-content: center;
 

@@ -31,58 +31,55 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
     <div class="wrapper contenedor">
         <p class="titulo-principal">nuevo empleado</p>
 
-        <fieldset class="borde">
-            <legend class="borde__texto">Registro</legend>
+        <form id="signupform" class="formulario">
+            <div class="form-group">
+                <label class="formulario__texto">nombre usuario</label>
+                <input type="text" name="username" class="campo">
+                <span id="username_err"></span>
+            </div>    
+            <div class="form-group">
+                <label class="formulario__texto">contraseña</label>
+                <input type="password" name="password" class="campo">
+                <span id="password_err"></span>
+            </div>
+            <div class="form-group">
+                <label class="formulario__texto">repite contraseña</label>
+                <input type="password" name="confirm_password" class="campo">
+                <span id="confirm_password_err"></span>
+            </div>
+            <div class="form-group">
+                <label class="formulario__texto">nombre</label>
+                <input type="text" name="name" class="campo">
+                <span id="name_err"></span>
+            </div>    
+            <div class="form-group">
+                <label class="formulario__texto">apellido paterno</label>
+                <input type="text" name="last_name" class="campo">
+                <span id="last_name_err"></span>
+            </div>    
+            <div class="form-group">
+                <label class="formulario__texto">apellido materno</label>
+                <input type="text" name="mid_name" class="campo">
+                <span id="mid_name_err"></span>
+            </div>
+            <div class="form-group">
+                <label class="formulario__texto">turno</label>
+                <select name="shift" class="">
+                    <option value=1>Matutino</option>
+                    <option value=0>Vespertino</option>
+                </select>
+            </div> 
+            <div class="form-group">
+                <label class="formulario__texto">autorización</label>
+                <input type="password" name="owner_pass" class="campo">
+                <span id="owner_pass_err"></span>
+            </div>
+            <div>
+                <input type="submit" class="" value="agregar">
 
-            <form id="signupform" class="formulario-registro">
-                <div class="form-group elemento">
-                    <label class="formulario__texto">nombre usuario</label>
-                    <input type="text" name="username" class="campo">
-                    <span id="username_err"></span>
-                </div>    
-                <div class="form-group elemento">
-                    <label class="formulario__texto">contraseña</label>
-                    <input type="password" name="password" class="campo">
-                    <span id="password_err"></span>
-                </div>
-                <div class="form-group elemento">
-                    <label class="formulario__texto">repite contraseña</label>
-                    <input type="password" name="confirm_password" class="campo">
-                    <span id="confirm_password_err"></span>
-                </div>
-                <div class="form-group elemento">
-                    <label class="formulario__texto">nombre</label>
-                    <input type="text" name="name" class="campo">
-                    <span id="name_err"></span>
-                </div>    
-                <div class="form-group elemento">
-                    <label class="formulario__texto">apellido paterno</label>
-                    <input type="text" name="last_name" class="campo">
-                    <span id="last_name_err"></span>
-                </div>    
-                <div class="form-group elemento">
-                    <label class="formulario__texto">apellido materno</label>
-                    <input type="text" name="mid_name" class="campo">
-                    <span id="mid_name_err"></span>
-                </div>
-                <div class="form-group elemento">
-                    <label class="formulario__texto">turno</label>
-                    <select name="shift" class="campo">
-                        <option value=1>Matutino</option>
-                        <option value=0>Vespertino</option>
-                    </select>
-                </div> 
-                <div class="form-group elemento">
-                    <label class="formulario__texto">autorización</label>
-                    <input type="password" name="owner_pass" class="campo">
-                    <span id="owner_pass_err"></span>
-                </div>
-                <div class="formulario-registro--last">
-                    <input type="submit" class="formulario-registro__boton-agregar" value="agregar">
-                </div>
-                <p class="formulario-registro--last">ya tienes cuenta? <button class="formulario-registro__boton-inicio " onclick="toLogin()">inicia sesión</button></p>
-            </form>
-        </fieldset>
+            </div>
+            <p class="">ya tienes cuenta? <button class="" onclick="toLogin()">inicia sesión</button></p>
+        </form>
 
     </div>   
 

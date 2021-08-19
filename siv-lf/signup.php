@@ -31,56 +31,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
     <div class="wrapper contenedor">
         <p class="titulo-principal">nuevo empleado</p>
 
-<<<<<<< HEAD
         <fieldset class="borde">
             <legend class="borde__texto">Registro</legend>
-=======
-        <form id="signupform">
-            <div class="form-group">
-                <label class="">nombre usuario</label>
-                <input type="text" name="username" class="">
-                <label class="" id="username_err"></label>
-            </div>    
-            <div class="form-group">
-                <label class="">contraseña</label>
-                <input type="password" name="password" class="">
-                <label class="" id="password_err"></label>
-            </div>
-            <div class="form-group">
-                <label class="">repite contraseña</label>
-                <input type="password" name="confirm_password" class="">
-                <label class="" id="confirm_password_err"></label>
-            </div>
-            <div class="form-group">
-                <label class="">nombre</label>
-                <input type="text" name="name" class="">
-                <label class="" id="name_err"></label>
-            </div>    
-            <div class="form-group">
-                <label class="">apellido paterno</label>
-                <input type="text" name="last_name" class="">
-                <label class="" id="last_name_err"></label>
-            </div>    
-            <div class="form-group">
-                <label class="">apellido materno</label>
-                <input type="text" name="mid_name" class="">
-                <label class="" id="mid_name_err"></label>
-            </div>
-            <div class="form-group">
-                <label class="">turno</label>
-                <select name="shift" class="">
-                    <option value=1>Matutino</option>
-                    <option value=0>Vespertino</option>
-                </select>
-            </div> 
-            <div class="form-group">
-                <label class="">autorización</label>
-                <input type="password" name="owner_pass" class="">
-                <label class="" id="owner_pass_err"></label>
-            </div>
-            <div>
-                <input type="submit" class="" value="agregar">
->>>>>>> master
 
             <form id="signupform" class="formulario-registro">
                 <div class="form-group elemento">

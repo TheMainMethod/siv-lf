@@ -16,6 +16,15 @@ fecha_preparacion datetime,
 primary key (id_producto)
 );
 
+create table `ejemplares`
+(
+codigo_de_barras int not null unique auto_increment,
+productos_id_producto int not null,
+
+primary key (codigo_de_barras),
+constraint foreign key (productos_id_producto) references `productos`(id_producto) on update cascade on delete cascade
+);
+
 
 create table `empleados`
 (
@@ -123,11 +132,87 @@ constraint foreign key (empleados_id_empleado) references `empleados`(id_emplead
 constraint foreign key (pasteles_personalizados_id_pastel) references `pasteles personalizados`(id_pastel) on update cascade on delete cascade
 );
 
+-- -----------------
+-- PROCEDIMIENTOS
+-- -----------------
+DELIMITER //
+
+drop procedure if exists agrega_ejemplares//
+create procedure agrega_ejemplares(in _id_producto int, in _cantidad int)
+begin 
+	-- update `productos` set cantidad = cantidad + _cantidad where id_producto = _id_producto;
+insercion_ejemplares: loop
+	insert into `ejemplares`(productos_id_producto) values(_id_producto);
+	set _cantidad = _cantidad - 1;
+
+	if(_cantidad <= 0) then
+		leave insercion_ejemplares;
+	end if;
+end loop;
+
+end //
+
+drop procedure if exists remueve_ejemplares//
+create procedure remueve_ejemplares(in _id_producto int)
+begin 
+
+declare new_stock int;
+
+set new_stock = (select cantidad from `productos` where id_producto = _id_producto) - 1;
+
+update `productos` set cantidad = new_stock where id_producto = _id_producto;
+
+end //
 
 
--- 
+DELIMITER ;
+-- -----------------
+-- FUNCIONES
+-- -----------------
+
+
+
+-- -----------------
+-- TRIGGERS
+-- -----------------
+DELIMITER //
+
+drop trigger if exists productos_ai//
+create trigger productos_ai after insert on `productos` for each row
+begin
+
+	call agrega_ejemplares(new.id_producto,new.cantidad);
+
+end //
+
+-- falta
+drop trigger if exists productos_au//
+create trigger productos_au after update on `productos` for each row
+begin
+	declare delta_cantidad int;
+
+	if(new.cantidad > old.cantidad) then
+		set delta_cantidad = new.cantidad - old.cantidad;
+    
+		call agrega_ejemplares(new.id_producto,delta_cantidad);
+    end if;
+
+end //
+
+
+drop trigger if exists ejemplares_bd//
+create trigger ejemplares_bd before delete on `ejemplares` for each row
+begin
+
+	call remueve_ejemplares(old.productos_id_producto);
+
+end //
+
+
+DELIMITER ;
+-- -----------------
 -- USUARIO DUEÑO
--- 
+-- -----------------
 
 insert into `empleados`(n_usuario, contra, es_turno_matutino, rol) values('DUEÑO', '$2y$11$Wj/pDFYCXzqhMKv8dy8CUe0X128WAq3Tg/L5sUvYnzZ3xXwCVqZwa', false, 'dueño');
 

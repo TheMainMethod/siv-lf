@@ -1,10 +1,5 @@
 $(document).ready(function()
 {
-    $(document).bind('keydown', "insert", function assets() {
-        alert("varios");
-        return false;
-    });
-
 
     $(document).bind('keydown', "Ctrl+p", function assets() {
         alert("artículos comunes");

@@ -14,7 +14,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Pantalla Principal</title>
+    <title>Ventas</title>
 
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/jquery.hotkeys.js"></script>
@@ -23,19 +23,35 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 <body>
     <div class="backend">
         <header id="logo">
-            .
+            aqu iría el logo
 	   </header>
 	<aside id="barraLateral">
-        <div><button class="backend" onclick="">Ventas</button></div>
-        <div><button class="backend" onclick="">Cliente</button></div>
-        <div><button class="backend" onclick="">Productos</button></div>
-        <div><button class="backend" onclick="">Inventario</button></div>
-        <div><button class="backend" onclick="">Corte</button></div>
-        <p></p>
-        <div><button class="backend" onclick="">Settings</button></div>
+        <nav>
+            <ul style="display:inline">
+                <li><button class="strong-button-backend">Ventas</button></li>
+                <li><button class="backend" onclick="">Productos</button></li>
+                <li><button class="backend" onclick="">Pedidos</button></li>
+                <li><button class="backend" onclick="toInventory()">Inventario</button></li>
+                <li><button class="backend" onclick="">Corte</button></li>
+                <?php
+                if($_SESSION["role"] == 'dueño')
+                {
+                    echo '<li><button class="backend" onclick="">Empleados</button></li>';
+                }
+                ?>
+            </ul>
+        </nav>
+
+        <div><button class="backend" onclick="">Ajustes</button></div>
         <time></time>
         <p></p>
     </aside>
+
+    <p>bienvenido, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</p>
+    <p>
+        <button class="backend" onclick="logout()">cerrar sesión</button>
+    </p>
+
         <section id="barra de busqueda"  style="width:100%">
              <div class="form-group">
             <input type="text" name="nombre producto" class="backend">
@@ -46,7 +62,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
         </section>
          <section id="botones" style="width:100%">
              <div class="form-group">
-            <button class="backend" onclick="">Varios</button>&nbsp;INSERT&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Art. Común</button>&nbsp;CTRL+P&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Mayoreo</button>&nbsp;F10&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Entradas</button>&nbsp;F7&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,4 +106,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     </div>
     <small>SIV-LF</small>
     <script src="js/sales.js"></script> 
+    <script src="js/navigation.js"></script> 
 </body>

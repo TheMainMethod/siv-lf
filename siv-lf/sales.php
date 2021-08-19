@@ -27,8 +27,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 	   </header>
 	<aside id="barraLateral">
         <div><button class="backend" onclick="">Ventas</button></div>
-        <div><button class="backend" onclick="">Cliente</button></div>
         <div><button class="backend" onclick="">Productos</button></div>
+        <div><button class="backend" onclick="">Pedidos</button></div>
         <div><button class="backend" onclick="">Inventario</button></div>
         <div><button class="backend" onclick="">Corte</button></div>
         <p></p>
@@ -46,7 +46,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
         </section>
          <section id="botones" style="width:100%">
              <div class="form-group">
-            <button class="backend" onclick="">Varios</button>&nbsp;INSERT&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Art. Común</button>&nbsp;CTRL+P&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Mayoreo</button>&nbsp;F10&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="backend" onclick="">Entradas</button>&nbsp;F7&nbsp;&nbsp;&nbsp;&nbsp;

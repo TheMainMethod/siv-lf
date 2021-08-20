@@ -1,6 +1,0 @@
-esta carpeta no se va a quedar, pero facilita el intercambio de archivos sql xd
--Kvin
-
-
-
-C:/xampp/htdocs/siv-lf/sql/modelo bd siv-lf v1.1.sql
